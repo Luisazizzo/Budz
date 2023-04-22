@@ -5,8 +5,9 @@
     justify-content: center;
     gap: 10px;
     padding: 10px;
+
     .img_album {
-      width: 100px;
+      width: 80px;
       height: 80px;
       position: relative;
       img {
@@ -15,6 +16,9 @@
       .folder {
         font-size: 25px;
         cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        right: 0;
       }
     }
     .name_album {
@@ -75,7 +79,7 @@
         .folder {
           position: absolute;
           bottom: 0;
-  right: 0;
+          right: 0;
         }
       }
       .name_album {
