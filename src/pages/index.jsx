@@ -13,12 +13,12 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import logo from "../../public/logo/cuffie.png";
 import styles from "@/styles/Home.module.scss";
-import deezer from "../../public/logo/deezer.png"
+import deezer from "../../public/logo/deezer.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ artistData, trackData, albumData, radioData }) {
-  const [logged, setLogged] = useState(false);
+  const [logged, setLogged] = useState(true);
   const [login, setLogin] = useState(false);
   const router = useRouter();
   const [isHome, setIsHome] = useState(true);
@@ -78,12 +78,15 @@ export default function Home({ artistData, trackData, albumData, radioData }) {
             <Navbar title={"Budz"} />
             <div className={styles.container}>
               <div className={styles.leftSide}>
-                <Hero  />
+                <Hero />
                 <section className={styles.artistListMobile}>
                   <h3 className={styles.titleTopArtist}>Top Artist</h3>
                   <div className={styles.listTopArtist}>
                     {artistData?.data.map((data, i) => (
-                      <Home_Page_ArtistItem key={i} data={data} isHome={isHome}
+                      <Home_Page_ArtistItem
+                        key={i}
+                        data={data}
+                        isHome={isHome}
                       />
                     ))}
                   </div>
@@ -92,7 +95,10 @@ export default function Home({ artistData, trackData, albumData, radioData }) {
                   <h3 className={styles.titleTopAlbum}>Top Albums</h3>
                   <div className={styles.listTopArtist}>
                     {albumData?.data.map((data, i) => (
-                      <Home_Page_AlbumItem key={i} data={data} isHome={isHome}
+                      <Home_Page_AlbumItem
+                        key={i}
+                        data={data}
+                        isHome={isHome}
                       />
                     ))}
                   </div>
@@ -127,7 +133,6 @@ export default function Home({ artistData, trackData, albumData, radioData }) {
                         key={i}
                         data={data}
                         isHome={isHome}
-                       
                       />
                     ))}
                   </div>
@@ -142,7 +147,6 @@ export default function Home({ artistData, trackData, albumData, radioData }) {
                         key={i}
                         data={data}
                         isHome={isHome}
-                        
                       />
                     ))}
                   </div>
@@ -158,13 +162,13 @@ export default function Home({ artistData, trackData, albumData, radioData }) {
           <div className={styles.login_box}>
             <div className={styles.header_login}>
               <div className={styles.container_logo}>
-              <Image
-                src={logo}
-                alt={"logo.png"}
-                width={120}
-                height={100}
-                className={styles.logo}
-              />
+                <Image
+                  src={logo}
+                  alt={"logo.png"}
+                  width={120}
+                  height={100}
+                  className={styles.logo}
+                />
               </div>
               <div className={styles.deezer_container}>
                 <p className={styles.logo_title}>Powered by :</p>
@@ -219,17 +223,21 @@ export default function Home({ artistData, trackData, albumData, radioData }) {
                 available to you, see our FAQ.
               </p>
             </div>
-            
           </div>
           {errorPopup && (
-              <div className={styles.popup_container}>
-                <div className={styles.popup_overlay} onClick={onHandleHidePopup}></div>
-                <div className={styles.popup_error}>
-                  <p className={styles.close_error} onClick={onHandleHidePopup}>x</p>
-                  <p >Wrong Username or Password, please try again</p>
-                </div>
+            <div className={styles.popup_container}>
+              <div
+                className={styles.popup_overlay}
+                onClick={onHandleHidePopup}
+              ></div>
+              <div className={styles.popup_error}>
+                <p className={styles.close_error} onClick={onHandleHidePopup}>
+                  x
+                </p>
+                <p>Wrong Username or Password, please try again</p>
               </div>
-            )}
+            </div>
+          )}
         </div>
       )}
     </>
